@@ -1,0 +1,1584 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{pdfpages} \usepackage{graphics}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{wrapfig}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\includepdf{page_de_garde.pdf}
+
+\tableofcontents
+
+\hypertarget{section}{%
+\section{\texorpdfstring{\textcolor{blue}{PARTIE 1}}{}}\label{section}}
+
+\hypertarget{i.-pruxe9paration-des-donnuxe9es}{%
+\subsection{I. Préparation des
+données}\label{i.-pruxe9paration-des-donnuxe9es}}
+
+\hypertarget{i.1-description-de-la-base}{%
+\subsubsection{I.1 Description de la
+base}\label{i.1-description-de-la-base}}
+
+\hypertarget{i.2-importation-et-mise-en-forme}{%
+\subsubsection{\texorpdfstring{\textbf{I.2 Importation et mise en
+forme}}{I.2 Importation et mise en forme}}\label{i.2-importation-et-mise-en-forme}}
+
+\hypertarget{importation-des-bibliothuxe8ques-nuxe9cessaires}{%
+\paragraph{Importation des bibliothèques
+nécessaires}\label{importation-des-bibliothuxe8ques-nuxe9cessaires}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Importation des librairies nécessaires}
+\FunctionTok{library}\NormalTok{(}\StringTok{"readxl"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"gtsummary"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"flextable"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"sf"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"leaflet"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"DT"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"ggspatial"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"webshot"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"gt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{importation-de-la-base-de-donnuxe9es-dans-un-objet-de-type-data.frame-nommuxe9-projet}{%
+\paragraph{Importation de la base de données dans un objet de type
+data.frame nommé
+projet}\label{importation-de-la-base-de-donnuxe9es-dans-un-objet-de-type-data.frame-nommuxe9-projet}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Importation de la base de données dans un objet de type data.frame nommé projet}
+\NormalTok{projet}\OtherTok{\textless{}{-}}\FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"Base\_Partie 1.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tableau-ruxe9sumant-les-valeurs-manquantes-par-variable}{%
+\paragraph{Tableau résumant les valeurs manquantes par
+variable}\label{tableau-ruxe9sumant-les-valeurs-manquantes-par-variable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Tableau résumant les valeurs manquantes par variable}
+\NormalTok{flextable}\SpecialCharTok{::}\FunctionTok{flextable}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{variables=}\FunctionTok{colnames}\NormalTok{(projet),}
+                                \StringTok{\textquotesingle{}valeurs manquantes\textquotesingle{}}\OtherTok{=}\FunctionTok{apply}\NormalTok{(projet, }\AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }
+                                                       \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x)))))}
+\end{Highlighting}
+\end{Shaded}
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.75in}|p{0.75in}}
+
+
+
+\ascline{1.5pt}{666666}{1-2}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{variables}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{valeurs.manquantes}}} \\
+
+\ascline{1.5pt}{666666}{1-2}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-2}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{variables}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{valeurs.manquantes}}} \\
+
+\ascline{1.5pt}{666666}{1-2}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{key}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q1}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q2}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q23}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_1}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_2}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_3}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_4}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_5}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_6}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_7}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_9}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q24a\_10}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q25}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q26}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q12}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q14b}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q16}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q17}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{131}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q19}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{120}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q20}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{filiere\_1}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{filiere\_2}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{filiere\_3}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{filiere\_4}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q8}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{q81}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{gps\_menlatitude}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{gps\_menlongitude}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{submissiondate}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{start}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{today}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0}}} \\
+
+\ascline{1.5pt}{666666}{1-2}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#apply(projet, MARGIN = 2, function(x) sum(is.na(x)) calcule les valeurs manquantes}
+\CommentTok{\#par variables et flextable vient associer au nom de chaque variable sa valeur manquante.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{vuxe9rification-de-la-contenance-pour-la-variable-key-de-donnuxe9es-manquantes-dans-la-base-projet-et-identification-le-cas-uxe9chuxe9ant-du-statut-juridique-de-la-ou-des-pme-concernuxe9es.}{%
+\paragraph{\texorpdfstring{Vérification de la contenance pour la
+variable \textbf{key} de données manquantes dans la base \textbf{projet}
+et identification le cas échéant du statut juridique de la (ou des) PME
+concernées.}{Vérification de la contenance pour la variable key de données manquantes dans la base projet et identification le cas échéant du statut juridique de la (ou des) PME concernées.}}\label{vuxe9rification-de-la-contenance-pour-la-variable-key-de-donnuxe9es-manquantes-dans-la-base-projet-et-identification-le-cas-uxe9chuxe9ant-du-statut-juridique-de-la-ou-des-pme-concernuxe9es.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{all}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(projet}\SpecialCharTok{$}\NormalTok{key))) \{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"La variable Key ne possède pas de valeurs manquantes"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{cat}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Le nombre de valeurs manquantes de la variable key est"}\NormalTok{, }
+              \FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(projet}\SpecialCharTok{$}\NormalTok{key))))}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{ Les types de PME concernées sont : }\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }
+      \FunctionTok{paste}\NormalTok{(projet}\SpecialCharTok{$}\NormalTok{q12[}\FunctionTok{is.na}\NormalTok{(projet}\SpecialCharTok{$}\NormalTok{key)]), }\AttributeTok{sep=}\StringTok{" "}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La variable Key ne possède pas de valeurs manquantes
+\end{verbatim}
+
+\hypertarget{i.3-cruxe9ation-de-variables}{%
+\subsubsection{\texorpdfstring{\textbf{I.3 Création de
+variables}}{I.3 Création de variables}}\label{i.3-cruxe9ation-de-variables}}
+
+\hypertarget{renommons-la-variable-q1-en-region}{%
+\paragraph{\texorpdfstring{Renommons la variable \textbf{q1} en
+\textbf{region}}{Renommons la variable q1 en region}}\label{renommons-la-variable-q1-en-region}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(}\FunctionTok{match}\NormalTok{(}\StringTok{"q1"}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(projet))))\{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"la base \textquotesingle{}Projet\textquotesingle{} ne contient pas la variable \textquotesingle{}q1\textquotesingle{}"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  projet }\OtherTok{\textless{}{-}}\NormalTok{ projet }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{region =}\NormalTok{ q1)}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Variable \textquotesingle{}q1\textquotesingle{} renommée en \textquotesingle{}région\textquotesingle{}"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Variable 'q1' renommée en 'région'
+\end{verbatim}
+
+\hypertarget{renommons-la-variable-q2-en-departement}{%
+\paragraph{\texorpdfstring{Renommons la variable \textbf{q2} en
+\textbf{departement}}{Renommons la variable q2 en departement}}\label{renommons-la-variable-q2-en-departement}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(}\FunctionTok{match}\NormalTok{(}\StringTok{"q2"}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(projet))))\{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"la base \textquotesingle{}Projet\textquotesingle{} ne contient pas la variable \textquotesingle{}q2\textquotesingle{}"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  projet }\OtherTok{\textless{}{-}}\NormalTok{ projet }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{departement =}\NormalTok{ q2)}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Variable \textquotesingle{}q2\textquotesingle{} renommée en \textquotesingle{}département\textquotesingle{}"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Variable 'q2' renommée en 'département'"
+\end{verbatim}
+
+\hypertarget{renommons-la-variable-q23-en-sexe}{%
+\paragraph{\texorpdfstring{Renommons la variable \textbf{q23} en
+\textbf{sexe}}{Renommons la variable q23 en sexe}}\label{renommons-la-variable-q23-en-sexe}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(}\FunctionTok{match}\NormalTok{(}\StringTok{"q23"}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(projet))))\{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"la base \textquotesingle{}Projet\textquotesingle{} ne contient pas la variable \textquotesingle{}q23\textquotesingle{}"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  projet }\OtherTok{\textless{}{-}}\NormalTok{ projet }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{sexe =}\NormalTok{ q23)}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Variable \textquotesingle{}q23\textquotesingle{} renommée en \textquotesingle{}sexe\textquotesingle{}"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Variable 'q23' renommée en 'sexe'
+\end{verbatim}
+
+\hypertarget{cruxe9ation-de-la-variable-sexe_2-qui-vaut-1-si-sexe-uxe9gale-uxe0-femme-et-0-sinon.}{%
+\paragraph{\texorpdfstring{Création de la variable \textbf{sexe\_2} qui
+vaut \textbf{1} si \textbf{sexe égale à Femme} et \textbf{0}
+sinon.}{Création de la variable sexe\_2 qui vaut 1 si sexe égale à Femme et 0 sinon.}}\label{cruxe9ation-de-la-variable-sexe_2-qui-vaut-1-si-sexe-uxe9gale-uxe0-femme-et-0-sinon.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#code de questionr::irec()}
+\CommentTok{\# projet$sexe\_2 \textless{}{-} projet$sexe}
+\CommentTok{\# projet$sexe\_2[projet$sexe == "Femme"] \textless{}{-} "1"}
+\CommentTok{\# projet$sexe\_2[projet$sexe == "Homme"] \textless{}{-} "0"}
+\CommentTok{\# projet$sexe\_2 \textless{}{-} as.numeric(projet$sexe\_2)}
+\ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(}\FunctionTok{match}\NormalTok{(}\StringTok{"sexe"}\NormalTok{,}\FunctionTok{colnames}\NormalTok{(projet))))\{}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{" la base \textquotesingle{}projet\textquotesingle{} ne contient pas la variable \textquotesingle{}sexe\textquotesingle{}"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  projet}\SpecialCharTok{$}\NormalTok{sexe\_2 }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(projet}\SpecialCharTok{$}\NormalTok{sexe }\SpecialCharTok{==} \StringTok{"Femme"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Création de la variable sexe éffectué avec succès."}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Création de la variable sexe éffectué avec succès.
+\end{verbatim}
+
+\hypertarget{cruxe9ation-dun-data.frame-nommuxe9-langues-qui-prend-les-variables-key-et-les-variables-correspondantes-duxe9crites-plus-haut.}{%
+\paragraph{\texorpdfstring{Création d'un \textbf{data.frame} nommé
+\textbf{langues} qui prend les variables \textbf{key} et les variables
+correspondantes décrites plus
+haut.}{Création d'un data.frame nommé langues qui prend les variables key et les variables correspondantes décrites plus haut.}}\label{cruxe9ation-dun-data.frame-nommuxe9-langues-qui-prend-les-variables-key-et-les-variables-correspondantes-duxe9crites-plus-haut.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{langues}\OtherTok{\textless{}{-}}\NormalTok{projet[}\FunctionTok{c}\NormalTok{(}\StringTok{"key"}\NormalTok{,}\FunctionTok{grep}\NormalTok{(}\StringTok{"\^{}q24a\_"}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(projet), }\AttributeTok{value =} \ConstantTok{TRUE}\NormalTok{))]}
+\CommentTok{\#la fonction grep() va aller lire dans les variables du dataframe projet}
+\CommentTok{\# les variables dont le nom commence par "q24a\_" et l\textquotesingle{}on y ajoute la variable }
+\CommentTok{\#key avec le c() et enfin, on passe en paramètre le resultat au dataframe projet}
+\CommentTok{\# Cela permet de créer un nouveau dataframe "langues" avec les colonnes d\textquotesingle{}intérêt}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cruxe9ation-dune-variable-parle-qui-est-uxe9gale-au-nombre-de-langue-parluxe9e-par-le-dirigeant-de-la-pme.}{%
+\paragraph{\texorpdfstring{Création d'une variable \textbf{parle} qui
+est égale au nombre de langue parlée par le dirigeant de la
+PME.}{Création d'une variable parle qui est égale au nombre de langue parlée par le dirigeant de la PME.}}\label{cruxe9ation-dune-variable-parle-qui-est-uxe9gale-au-nombre-de-langue-parluxe9e-par-le-dirigeant-de-la-pme.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La nouvelle colonne contient la somme des valeurs de chaque ligne pour les}
+\CommentTok{\#colonnes qui commencent par "q24a\_" dans le dataframe "langues"}
+\NormalTok{langues}\SpecialCharTok{$}\NormalTok{parle }\OtherTok{\textless{}{-}} \FunctionTok{rowSums}\NormalTok{(langues[, }\FunctionTok{grepl}\NormalTok{(}\StringTok{"\^{}q24a\_"}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(langues))])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{suxe9lection-unique-des-variables-key-et-parle-et-affectation-au-dataframe-langues.}{%
+\paragraph{\texorpdfstring{Sélection unique des variables \textbf{key}
+et \textbf{parle}, et affectation au dataframe
+\textbf{langues}.}{Sélection unique des variables key et parle, et affectation au dataframe langues.}}\label{suxe9lection-unique-des-variables-key-et-parle-et-affectation-au-dataframe-langues.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#ici on va écraser le dataframe langue en conservant uniquement les deux}
+\CommentTok{\# variables key et parle}
+\NormalTok{langues}\OtherTok{\textless{}{-}}\NormalTok{langues[,}\FunctionTok{c}\NormalTok{(}\StringTok{"key"}\NormalTok{, }\StringTok{"parle"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{merge-des-data.frame-projet-et-langues}{%
+\paragraph{\texorpdfstring{Merge des \textbf{data.frame} \textbf{projet}
+et
+\textbf{langues}}{Merge des data.frame projet et langues}}\label{merge-des-data.frame-projet-et-langues}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{projet}\OtherTok{\textless{}{-}}\NormalTok{base}\SpecialCharTok{::}\FunctionTok{merge}\NormalTok{(projet, langues, }\AttributeTok{by =} \StringTok{"key"}\NormalTok{, }\AttributeTok{all =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ii.-analyses-descriptives}{%
+\subsection{II. Analyses descriptives}\label{ii.-analyses-descriptives}}
+
+\hypertarget{ruxe9partion-des-pme-suivant-le-sexe.}{%
+\subsubsection{Répartion des PME suivant le
+sexe.}\label{ruxe9partion-des-pme-suivant-le-sexe.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_summary}\NormalTok{(projet, }\AttributeTok{include=}\NormalTok{sexe) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_header}\NormalTok{(label}\SpecialCharTok{\textasciitilde{}}\StringTok{"**Total**"}
+\NormalTok{                                                    ) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_caption}\NormalTok{(}
+                                                      \AttributeTok{caption =} \StringTok{"**Répartition des PME suivant le sexe**"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lc@{}}
+\caption{\textbf{Répartition des PME suivant le sexe}}\tabularnewline
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+sexe & \\
+Femme & 191 (76\%) \\
+Homme & 59 (24\%) \\
+\end{longtable}
+
+\hypertarget{ruxe9partion-des-pme-suivant-le-niveau-dinstruction.}{%
+\subsubsection{Répartion des PME suivant le niveau
+d'instruction.}\label{ruxe9partion-des-pme-suivant-le-niveau-dinstruction.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_summary}\NormalTok{(projet, }\AttributeTok{include=}\NormalTok{q25, }\AttributeTok{label =} \FunctionTok{list}\NormalTok{(q25}\SpecialCharTok{\textasciitilde{}}\StringTok{"Niveau d\textquotesingle{}instruction"}\NormalTok{)}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_header}\NormalTok{(label}\SpecialCharTok{\textasciitilde{}}\StringTok{"**Total**"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_caption}\NormalTok{(}
+              \AttributeTok{caption =} \StringTok{"**Répartition des PME suivant }
+\StringTok{              le niveau d’instruction**"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lc@{}}
+\caption{\textbf{Répartition des PME suivant le niveau
+d'instruction}}\tabularnewline
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Niveau d'instruction & \\
+Aucun niveau & 79 (32\%) \\
+Niveau primaire & 56 (22\%) \\
+Niveau secondaire & 74 (30\%) \\
+Niveau Superieur & 41 (16\%) \\
+\end{longtable}
+
+\hypertarget{ruxe9partion-des-pme-suivant-le-statut-juridique.}{%
+\subsubsection{Répartion des PME suivant le statut
+juridique.}\label{ruxe9partion-des-pme-suivant-le-statut-juridique.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_summary}\NormalTok{(projet, }\AttributeTok{include=}\NormalTok{q12, }\AttributeTok{label =} \FunctionTok{list}\NormalTok{(q12}\SpecialCharTok{\textasciitilde{}}\StringTok{"Statut juridique"}\NormalTok{)}
+\NormalTok{            ) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_header}\NormalTok{(label}\SpecialCharTok{\textasciitilde{}}\StringTok{"**Total**"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_caption}\NormalTok{(}
+              \AttributeTok{caption =} \StringTok{"**Répartition des PME suivant}
+\StringTok{              le statut juridique**"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lc@{}}
+\caption{\textbf{Répartition des PME suivant le statut
+juridique}}\tabularnewline
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Statut juridique & \\
+Association & 6 (2.4\%) \\
+GIE & 179 (72\%) \\
+Informel & 38 (15\%) \\
+SA & 7 (2.8\%) \\
+SARL & 13 (5.2\%) \\
+SUARL & 7 (2.8\%) \\
+\end{longtable}
+
+\hypertarget{ruxe9partion-des-pme-suivant-le-propriuxe9tairelocataire.}{%
+\subsubsection{Répartion des PME suivant le
+propriétaire/locataire.}\label{ruxe9partion-des-pme-suivant-le-propriuxe9tairelocataire.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_summary}\NormalTok{(projet, }\AttributeTok{include=}\NormalTok{q81, }\AttributeTok{label =} \FunctionTok{list}\NormalTok{(q81}\SpecialCharTok{\textasciitilde{}}\StringTok{"propriétaire/locataire"}\NormalTok{)}
+\NormalTok{            )}\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_header}\NormalTok{(label}\SpecialCharTok{\textasciitilde{}}\StringTok{"**Total**"}
+\NormalTok{                               ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{modify\_caption}\NormalTok{(}\AttributeTok{caption =} \StringTok{"**Répartition }
+\StringTok{                 des PME suivant le type de logement**"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lc@{}}
+\caption{\textbf{Répartition des PME suivant le type de
+logement}}\tabularnewline
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Total} & \textbf{N = 250} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+propriétaire/locataire & \\
+Locataire & 24 (9.6\%) \\
+Propriétaire & 226 (90\%) \\
+\end{longtable}
+
+\hypertarget{ruxe9partion-des-pme-suivant-le-statut-juridique-et-le-sexe.}{%
+\subsubsection{Répartion des PME suivant le statut juridique et le
+sexe.}\label{ruxe9partion-des-pme-suivant-le-statut-juridique-et-le-sexe.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_cross}\NormalTok{(projet,}
+    \AttributeTok{row =}\NormalTok{  q12,}
+    \AttributeTok{col =}\NormalTok{ sexe,}
+    \AttributeTok{percent =} \StringTok{"row"}\NormalTok{,}
+    \AttributeTok{label =} \FunctionTok{list}\NormalTok{(q12}\SpecialCharTok{\textasciitilde{}}\StringTok{"Statut juridique"}\NormalTok{,sexe}\SpecialCharTok{\textasciitilde{}}\StringTok{"sexe"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_caption}\NormalTok{(}\AttributeTok{caption =} 
+                         \StringTok{"**Répartition des PME suivant}
+\StringTok{                       le statut juridique et le sexe**"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\textbf{Répartition des PME suivant le statut juridique et le
+sexe}}\tabularnewline
+\toprule\noalign{}
+& Femme & Homme & Total \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Femme & Homme & Total \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Statut juridique & & & \\
+Association & 3 (50\%) & 3 (50\%) & 6 (100\%) \\
+GIE & 149 (83\%) & 30 (17\%) & 179 (100\%) \\
+Informel & 32 (84\%) & 6 (16\%) & 38 (100\%) \\
+SA & 1 (14\%) & 6 (86\%) & 7 (100\%) \\
+SARL & 2 (15\%) & 11 (85\%) & 13 (100\%) \\
+SUARL & 4 (57\%) & 3 (43\%) & 7 (100\%) \\
+Total & 191 (76\%) & 59 (24\%) & 250 (100\%) \\
+\end{longtable}
+
+\hypertarget{ruxe9partion-des-pme-suivant-le-niveau-dinstruction-et-le-sexe.}{%
+\subsubsection{Répartion des PME suivant le niveau d'instruction et le
+sexe.}\label{ruxe9partion-des-pme-suivant-le-niveau-dinstruction-et-le-sexe.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_cross}\NormalTok{(projet,}
+    \AttributeTok{row =}\NormalTok{  q25,}
+    \AttributeTok{col =}\NormalTok{ sexe,}
+    \AttributeTok{percent =} \StringTok{"row"}\NormalTok{,}
+    \AttributeTok{label =} \FunctionTok{list}\NormalTok{(q25}\SpecialCharTok{\textasciitilde{}}\StringTok{"Niveau d\textquotesingle{}instruction"}\NormalTok{,sexe}\SpecialCharTok{\textasciitilde{}}\StringTok{"**sexe**"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_caption}\NormalTok{(}\AttributeTok{caption =} 
+                         \StringTok{"**Répartition des PME suivant}
+\StringTok{                       le niveau d\textquotesingle{}instruction et le sexe**"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\textbf{Répartition des PME suivant le niveau d'instruction et
+le sexe}}\tabularnewline
+\toprule\noalign{}
+& Femme & Homme & Total \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Femme & Homme & Total \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Niveau d'instruction & & & \\
+Aucun niveau & 70 (89\%) & 9 (11\%) & 79 (100\%) \\
+Niveau primaire & 48 (86\%) & 8 (14\%) & 56 (100\%) \\
+Niveau secondaire & 56 (76\%) & 18 (24\%) & 74 (100\%) \\
+Niveau Superieur & 17 (41\%) & 24 (59\%) & 41 (100\%) \\
+Total & 191 (76\%) & 59 (24\%) & 250 (100\%) \\
+\end{longtable}
+
+\hypertarget{ruxe9partion-des-pme-suivant-le-propriuxe9tairelocataire-et-le-sexe.}{%
+\subsubsection{Répartion des PME suivant le Propriétaire/locataire et le
+sexe.}\label{ruxe9partion-des-pme-suivant-le-propriuxe9tairelocataire-et-le-sexe.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_cross}\NormalTok{(projet,}
+    \AttributeTok{row =}\NormalTok{  q81,}
+    \AttributeTok{col =}\NormalTok{ sexe,}
+    \AttributeTok{percent =} \StringTok{"row"}\NormalTok{,}
+    \AttributeTok{label =} \FunctionTok{list}\NormalTok{(q81}\SpecialCharTok{\textasciitilde{}}\StringTok{"Propriétaire/locataire"}\NormalTok{,sexe}\SpecialCharTok{\textasciitilde{}}\StringTok{"**sexe**"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{modify\_caption}\NormalTok{(}\AttributeTok{caption =} 
+                         \StringTok{"**Répartition des PME suivant }
+\StringTok{                       le niveau d\textquotesingle{}instruction et le sexe**"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\textbf{Répartition des PME suivant le niveau d'instruction et
+le sexe}}\tabularnewline
+\toprule\noalign{}
+& Femme & Homme & Total \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Femme & Homme & Total \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Propriétaire/locataire & & & \\
+Locataire & 16 (67\%) & 8 (33\%) & 24 (100\%) \\
+Propriétaire & 175 (77\%) & 51 (23\%) & 226 (100\%) \\
+Total & 191 (76\%) & 59 (24\%) & 250 (100\%) \\
+\end{longtable}
+
+\hypertarget{statistiques-descriptives-de-notre-choix-sur-les-autres-variables-uxe0-duxe9finir.}{%
+\subsubsection{\texorpdfstring{\textbf{Statistiques descriptives de
+notre choix sur les autres variables (à
+définir).}}{Statistiques descriptives de notre choix sur les autres variables (à définir).}}\label{statistiques-descriptives-de-notre-choix-sur-les-autres-variables-uxe0-duxe9finir.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Répartition des PME suivant le sexe, le niveau d\textquotesingle{}instruction, le statut juridique et le propriétaire locataire}
+
+\NormalTok{tbl1 }\OtherTok{\textless{}{-}}\NormalTok{ projet }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_summary}\NormalTok{(}\AttributeTok{include =} \FunctionTok{c}\NormalTok{(}\StringTok{"sexe"}\NormalTok{, }\StringTok{"q25"}\NormalTok{, }\StringTok{"q12"}\NormalTok{, }\StringTok{"q81"}\NormalTok{))}
+\CommentTok{\# Répartition des PME suivant le statut juridique et le sexe,   le niveau d’instruction et le sexe, •   Propriétaire/locataire suivant le sexe}
+\NormalTok{tbl2 }\OtherTok{\textless{}{-}}\NormalTok{ projet }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{tbl\_summary}\NormalTok{(}
+  \AttributeTok{include =} \FunctionTok{c}\NormalTok{(}\StringTok{"q25"}\NormalTok{, }\StringTok{"q12"}\NormalTok{, }\StringTok{"q81"}\NormalTok{), }
+  \AttributeTok{by =}\StringTok{"sexe"}\NormalTok{, }\AttributeTok{label=}\FunctionTok{list}\NormalTok{(q12}\SpecialCharTok{\textasciitilde{}} \StringTok{"Statut juridique"}\NormalTok{, }
+\NormalTok{                         q25}\SpecialCharTok{\textasciitilde{}} \StringTok{"Niveau d\textquotesingle{}instruction"}\NormalTok{, }
+\NormalTok{                         q81}\SpecialCharTok{\textasciitilde{}} \StringTok{"Propriétaire/locataire"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{add\_overall}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{modify\_header}\NormalTok{(label }\SpecialCharTok{\textasciitilde{}} \StringTok{"**Caractéristiques**"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{modify\_spanning\_header}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"stat\_1"}\NormalTok{, }\StringTok{"stat\_2"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"**Sexe**"}\NormalTok{) }
+
+\DocumentationTok{\#\# Empillement l\textquotesingle{}un sur l\textquotesingle{}autre}
+
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_stack}\NormalTok{(}
+  \FunctionTok{list}\NormalTok{(tbl1, tbl2),}
+  \AttributeTok{group\_header =} \FunctionTok{c}\NormalTok{(}\StringTok{"Modèle univarié"}\NormalTok{, }\StringTok{"Modèle bivaré"}\NormalTok{) }\DocumentationTok{\#\# intitulé des groupes de tableau associés}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1758}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2527}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1429}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2198}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2088}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Group}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Characteristic}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{N = 250}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Femme}, N = 191
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Homme}, N = 59
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Modèle univarié & sexe & & & \\
+& Femme & 191 (76\%) & & \\
+& Homme & 59 (24\%) & & \\
+& q25 & & & \\
+& Aucun niveau & 79 (32\%) & & \\
+& Niveau primaire & 56 (22\%) & & \\
+& Niveau secondaire & 74 (30\%) & & \\
+& Niveau Superieur & 41 (16\%) & & \\
+& q12 & & & \\
+& Association & 6 (2.4\%) & & \\
+& GIE & 179 (72\%) & & \\
+& Informel & 38 (15\%) & & \\
+& SA & 7 (2.8\%) & & \\
+& SARL & 13 (5.2\%) & & \\
+& SUARL & 7 (2.8\%) & & \\
+& q81 & & & \\
+& Locataire & 24 (9.6\%) & & \\
+& Propriétaire & 226 (90\%) & & \\
+Modèle bivaré & Niveau d'instruction & & & \\
+& Aucun niveau & 79 (32\%) & 70 (37\%) & 9 (15\%) \\
+& Niveau primaire & 56 (22\%) & 48 (25\%) & 8 (14\%) \\
+& Niveau secondaire & 74 (30\%) & 56 (29\%) & 18 (31\%) \\
+& Niveau Superieur & 41 (16\%) & 17 (8.9\%) & 24 (41\%) \\
+& Statut juridique & & & \\
+& Association & 6 (2.4\%) & 3 (1.6\%) & 3 (5.1\%) \\
+& GIE & 179 (72\%) & 149 (78\%) & 30 (51\%) \\
+& Informel & 38 (15\%) & 32 (17\%) & 6 (10\%) \\
+& SA & 7 (2.8\%) & 1 (0.5\%) & 6 (10\%) \\
+& SARL & 13 (5.2\%) & 2 (1.0\%) & 11 (19\%) \\
+& SUARL & 7 (2.8\%) & 4 (2.1\%) & 3 (5.1\%) \\
+& Propriétaire/locataire & & & \\
+& Locataire & 24 (9.6\%) & 16 (8.4\%) & 8 (14\%) \\
+& Propriétaire & 226 (90\%) & 175 (92\%) & 51 (86\%) \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Agencement l\textquotesingle{}une à coté de l\textquotesingle{}autre}
+\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_merge}\NormalTok{(}
+  \FunctionTok{list}\NormalTok{(tbl1, tbl2),}
+  \AttributeTok{tab\_spanner =} \FunctionTok{c}\NormalTok{(}\StringTok{"Modèle bivarié"}\NormalTok{, }\StringTok{"Modèle multivarié"}\NormalTok{) }\DocumentationTok{\#\# intitulé des groupes de tableau associés}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2371}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1340}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2268}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2062}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1959}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Characteristic}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{N = 250}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Overall}, N = 250
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Femme}, N = 191
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Homme}, N = 59
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+sexe & & & & \\
+Femme & 191 (76\%) & & & \\
+Homme & 59 (24\%) & & & \\
+q25 & & & & \\
+Aucun niveau & 79 (32\%) & & & \\
+Niveau primaire & 56 (22\%) & & & \\
+Niveau secondaire & 74 (30\%) & & & \\
+Niveau Superieur & 41 (16\%) & & & \\
+q12 & & & & \\
+Association & 6 (2.4\%) & & & \\
+GIE & 179 (72\%) & & & \\
+Informel & 38 (15\%) & & & \\
+SA & 7 (2.8\%) & & & \\
+SARL & 13 (5.2\%) & & & \\
+SUARL & 7 (2.8\%) & & & \\
+q81 & & & & \\
+Locataire & 24 (9.6\%) & & & \\
+Propriétaire & 226 (90\%) & & & \\
+Niveau d'instruction & & & & \\
+Aucun niveau & & 79 (32\%) & 70 (37\%) & 9 (15\%) \\
+Niveau primaire & & 56 (22\%) & 48 (25\%) & 8 (14\%) \\
+Niveau secondaire & & 74 (30\%) & 56 (29\%) & 18 (31\%) \\
+Niveau Superieur & & 41 (16\%) & 17 (8.9\%) & 24 (41\%) \\
+Statut juridique & & & & \\
+Association & & 6 (2.4\%) & 3 (1.6\%) & 3 (5.1\%) \\
+GIE & & 179 (72\%) & 149 (78\%) & 30 (51\%) \\
+Informel & & 38 (15\%) & 32 (17\%) & 6 (10\%) \\
+SA & & 7 (2.8\%) & 1 (0.5\%) & 6 (10\%) \\
+SARL & & 13 (5.2\%) & 2 (1.0\%) & 11 (19\%) \\
+SUARL & & 7 (2.8\%) & 4 (2.1\%) & 3 (5.1\%) \\
+Propriétaire/locataire & & & & \\
+Locataire & & 24 (9.6\%) & 16 (8.4\%) & 8 (14\%) \\
+Propriétaire & & 226 (90\%) & 175 (92\%) & 51 (86\%) \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# \# Statistiques descriptives}
+\CommentTok{\# }
+\CommentTok{\# gtsummary::tbl\_stack(}
+\CommentTok{\#   list(tbl\_filiere\_1 , tbl\_filiere\_2 , tbl\_filiere\_3 , tbl\_filiere\_4),}
+\CommentTok{\#   group\_header = c("arachide", "anacarde", "mangue", "riz") \#\# intitulé des groupes de tableau associés}
+\CommentTok{\# )}
+\CommentTok{\# }
+\CommentTok{\# \#\# Agencement l\textquotesingle{}une à coté de l\textquotesingle{}autre}
+\CommentTok{\# gtsummary::tbl\_merge(}
+\CommentTok{\#   list(tbl\_filiere\_1, tbl\_filiere\_2, tbl\_filiere\_3, tbl\_filiere\_4),}
+\CommentTok{\#   tab\_spanner = c("arachide", "anacarde", "mangue", "riz") \#\# intitulé des groupes de tableau associés}
+\CommentTok{\# )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{iii.-un-peu-de-cartographie}{%
+\subsection{III. Un peu de
+cartographie}\label{iii.-un-peu-de-cartographie}}
+
+\hypertarget{transformation-du-data.frame-en-donnuxe9es-guxe9ographiques-dont-lobjet-sera-nommuxe9-projet_map.}{%
+\subsubsection{\texorpdfstring{Transformation du \textbf{data.frame} en
+données géographiques dont l'objet sera nommé
+\textbf{projet\_map}.}{Transformation du data.frame en données géographiques dont l'objet sera nommé projet\_map.}}\label{transformation-du-data.frame-en-donnuxe9es-guxe9ographiques-dont-lobjet-sera-nommuxe9-projet_map.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Jointure spatiale entre les données du projet et les données géospatiales du Sénégal}
+\CommentTok{\# 1. Lecture des données géospatiales du Sénégal avec la fonction st\_read()}
+\CommentTok{\# et spécification du système de coordonnées de référence (CRS)}
+\CommentTok{\#senegal \textless{}{-} st\_read("gadm41\_SEN\_1.shp")}
+\CommentTok{\# 2. Conversion des données du projet en un objet spatial "sf"}
+\CommentTok{\# en utilisant la fonction st\_as\_sf()}
+\CommentTok{\# {-} Les colonnes "gps\_menlongitude" et "gps\_menlatitude" contiennent les coordonnées spatiales}
+\CommentTok{\# {-} Le CRS est spécifié à l\textquotesingle{}aide de la fonction st\_crs() pour correspondre au CRS des données du Sénégal}
+\CommentTok{\# {-} Les données projet sont transformées en objet spatial "sf" avec st\_as\_sf()}
+\CommentTok{\# projet\_sf \textless{}{-} st\_as\_sf(projet, }
+\CommentTok{\#                       coords = c("gps\_menlongitude", "gps\_menlatitude"), }
+\CommentTok{\#                       crs = st\_crs(senegal))}
+\CommentTok{\# 3. Jointure spatiale entre les objets spatiaux "projet\_sf" et "senegal"}
+\CommentTok{\# en utilisant la fonction st\_join()}
+\CommentTok{\# {-} La fonction st\_join() effectue la jointure spatiale entre les polygones du Sénégal (senegal)}
+\CommentTok{\#   et les points du projet (projet\_sf) en attribuant à chaque point son emplacement spatial}
+\CommentTok{\#   en fonction de la région du Sénégal dans laquelle il se trouve}
+\CommentTok{\#code final}
+\NormalTok{projet\_map }\OtherTok{\textless{}{-}} \FunctionTok{st\_join}\NormalTok{(}\FunctionTok{st\_as\_sf}\NormalTok{(projet, }
+                      \AttributeTok{coords =} \FunctionTok{c}\NormalTok{(}\StringTok{"gps\_menlongitude"}\NormalTok{, }\StringTok{"gps\_menlatitude"}\NormalTok{), }
+                      \AttributeTok{crs=}\FunctionTok{st\_crs}\NormalTok{(}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{))),}
+                      \FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+\end{verbatim}
+
+\hypertarget{repruxe9sentation-spatiale-des-pme-suivant-le-sexe.}{%
+\subsubsection{Représentation spatiale des PME suivant le
+sexe.}\label{repruxe9sentation-spatiale-des-pme-suivant-le-sexe.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf\_text}\NormalTok{(}\AttributeTok{data=}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{label=}\NormalTok{NAME\_1))}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\NormalTok{projet\_map, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color=}\NormalTok{sexe), }\AttributeTok{size=}\FloatTok{1.5}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Repartition des PME suivant le sexe"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Carte du Sénégal"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Sexe"}\NormalTok{, }\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{),}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+\end{verbatim}
+
+\includegraphics{Rapport_projet_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\hypertarget{repruxe9sentation-spatiale-des-pme-suivant-le-niveau-dinstruction.}{%
+\subsubsection{Représentation spatiale des PME suivant le niveau
+d'instruction.}\label{repruxe9sentation-spatiale-des-pme-suivant-le-niveau-dinstruction.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf\_text}\NormalTok{(}\AttributeTok{data=}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{label=}\NormalTok{NAME\_1))}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\NormalTok{projet\_map, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color=}\NormalTok{q25), }\AttributeTok{size=}\DecValTok{2}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Repartition des PME suivant le niveau d\textquotesingle{}instructions"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Carte du Sénégal"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Niveau d\textquotesingle{}instruction"}\NormalTok{,}\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{),}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{annotation\_north\_arrow}\NormalTok{(}\AttributeTok{location =} \StringTok{"tl"}\NormalTok{, }\AttributeTok{scale =} \FloatTok{0.05}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+\end{verbatim}
+
+\includegraphics{Rapport_projet_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\hypertarget{analyse-spatiale-de-notre-choix-analyse-spatiale-de-luxe9tat-des-routes-passant-devant-les-entreprises-.}{%
+\subsubsection{Analyse spatiale de notre choix : Analyse spatiale de
+l'état des routes passant devant les entreprises
+.}\label{analyse-spatiale-de-notre-choix-analyse-spatiale-de-luxe9tat-des-routes-passant-devant-les-entreprises-.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf\_text}\NormalTok{(}\AttributeTok{data=}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"gadm41\_SEN\_1.shp"}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{label=}\NormalTok{NAME\_1))}\SpecialCharTok{+}
+  \FunctionTok{geom\_sf}\NormalTok{(}\AttributeTok{data=}\NormalTok{projet\_map, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color=}\NormalTok{q17), }\AttributeTok{size=}\DecValTok{2}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"état de la route bitumée passant devant les PME "}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Carte du Sénégal"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"état de la route bitumée"}\NormalTok{,}\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{),}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{annotation\_north\_arrow}\NormalTok{(}\AttributeTok{location =} \StringTok{"tl"}\NormalTok{, }\AttributeTok{scale =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+## Reading layer `gadm41_SEN_1' from data source 
+##   `C:\Users\starlab\Desktop\Projet_R\gadm41_SEN_1.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 14 features and 11 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -17.54319 ymin: 12.30786 xmax: -11.34247 ymax: 16.69207
+## Geodetic CRS:  WGS 84
+\end{verbatim}
+
+\includegraphics{Rapport_projet_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\hypertarget{section-1}{%
+\section{\texorpdfstring{\textcolor{blue}{Partie 2}}{}}\label{section-1}}
+
+\hypertarget{i.-nettoyage-et-gestion-des-donnuxe9es.}{%
+\subsection{I. Nettoyage et gestion des
+données.}\label{i.-nettoyage-et-gestion-des-donnuxe9es.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Importation de la base Base\_Partie 2.xlsx }
+\NormalTok{partie2}\OtherTok{\textless{}{-}}\NormalTok{readxl}\SpecialCharTok{::}\FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"Base\_Partie 2.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{renommons-la-variable-country_destination-en-destination-et-duxe9finissons-les-valeurs-nuxe9gatives-comme-manquantes.}{%
+\subsubsection{Renommons la variable ``country\_destination'' en
+``destination'' et définissons les valeurs négatives comme
+manquantes.}\label{renommons-la-variable-country_destination-en-destination-et-duxe9finissons-les-valeurs-nuxe9gatives-comme-manquantes.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Renommons la variable "country\_destination" en "destination"}
+\NormalTok{partie2 }\OtherTok{\textless{}{-}} \FunctionTok{rename}\NormalTok{(partie2, }\AttributeTok{destination =}\NormalTok{ country\_destination)}
+\CommentTok{\#Remplacement par des valeurs manquantes}
+\NormalTok{partie2}\SpecialCharTok{$}\NormalTok{destination }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(partie2}\SpecialCharTok{$}\NormalTok{destination }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{, }\ConstantTok{NA}\NormalTok{, partie2}\SpecialCharTok{$}\NormalTok{destination)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cruxe9ation-dune-nouvelle-variable-contenant-les-tranches-duxe2ge-de-5-ans-en-utilisant-la-variable-age.}{%
+\subsubsection{Création d'une nouvelle variable contenant les tranches
+d'âge de 5 ans en utilisant la variable
+``age''.}\label{cruxe9ation-dune-nouvelle-variable-contenant-les-tranches-duxe2ge-de-5-ans-en-utilisant-la-variable-age.}}
+
+La base de donnée contenant des valeurs abbérantes pour la variable age
+(999), nous imputons à toutes les valeurs supérieures à 100 la médiane
+des ages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Imputation aux valeurs abbérantes de la variable age de la médiane de la série}
+\NormalTok{median\_age }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(}\FunctionTok{subset}\NormalTok{(partie2, age}\SpecialCharTok{\textless{}}\DecValTok{100}\NormalTok{)}\SpecialCharTok{$}\NormalTok{age)}
+\NormalTok{partie2 }\OtherTok{\textless{}{-}}\NormalTok{ partie2}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{age =} \FunctionTok{ifelse}\NormalTok{(age }\SpecialCharTok{\textless{}} \DecValTok{0} \SpecialCharTok{|}\NormalTok{ age }\SpecialCharTok{\textgreater{}} \DecValTok{100}\NormalTok{, }\FunctionTok{median}\NormalTok{(}\FunctionTok{subset}\NormalTok{(partie2, age}\SpecialCharTok{\textgreater{}}\DecValTok{100}\NormalTok{)}\SpecialCharTok{$}\NormalTok{age), age))}
+\CommentTok{\#suppressions de l\textquotesingle{}objet après utilisation}
+\FunctionTok{rm}\NormalTok{(median\_age)}
+\end{Highlighting}
+\end{Shaded}
+
+Création de la variable proprement dite
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Création de la nouvelle variable "age\_group" en découpant la variable "age" en tranches de 5 ans}
+\NormalTok{age\_intervals }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\AttributeTok{by =} \DecValTok{5}\NormalTok{)}
+\NormalTok{age\_labels }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"]"}\NormalTok{, age\_intervals[}\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(age\_intervals)], }\StringTok{", "}\NormalTok{, age\_intervals[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{], }\StringTok{"]"}\NormalTok{)}
+
+\NormalTok{partie2 }\OtherTok{\textless{}{-}}\NormalTok{ partie2 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{age\_interval =} \FunctionTok{cut}\NormalTok{(age, }\AttributeTok{breaks =}\NormalTok{ age\_intervals, }\AttributeTok{labels =}\NormalTok{ age\_labels, }\AttributeTok{right =} \ConstantTok{FALSE}\NormalTok{))}
+\CommentTok{\#supression des objets après utilisation}
+\FunctionTok{rm}\NormalTok{(age\_intervals, age\_intervals)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cruxe9ation-dune-nouvelle-variable-contenant-le-nombre-dentretiens-ruxe9alisuxe9s-par-chaque-agent-recenseur}{%
+\subsubsection{Création d'une nouvelle variable contenant le nombre
+d'entretiens réalisés par chaque agent
+recenseur}\label{cruxe9ation-dune-nouvelle-variable-contenant-le-nombre-dentretiens-ruxe9alisuxe9s-par-chaque-agent-recenseur}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Variable nombre d\textquotesingle{}entretien par agent recenceur}
+\NormalTok{partie2}\OtherTok{\textless{}{-}}\NormalTok{ partie2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(enumerator) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{nbr\_entretien =} \FunctionTok{n}\NormalTok{())}
+\CommentTok{\#  retirons les regroupements temporaires effectués par group\_by()}
+\NormalTok{partie2 }\OtherTok{\textless{}{-}} \FunctionTok{ungroup}\NormalTok{(partie2)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cruxe9ation-dune-nouvelle-variable-qui-affecte-aluxe9atoirement-chaque-ruxe9pondant-uxe0-un-groupe-de-traitement-1-ou-de-controle-0.}{%
+\subsubsection{Création d'une nouvelle variable qui affecte
+aléatoirement chaque répondant à un groupe de traitement (1) ou de
+controle
+(0).}\label{cruxe9ation-dune-nouvelle-variable-qui-affecte-aluxe9atoirement-chaque-ruxe9pondant-uxe0-un-groupe-de-traitement-1-ou-de-controle-0.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#création de la variable aléatoire }
+\NormalTok{partie2}\OtherTok{\textless{}{-}}\NormalTok{ partie2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{group\_traitement =}\FunctionTok{sample}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{1}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(partie2), }
+                                                      \AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{fusion-de-la-taille-de-la-population-de-chaque-district-feuille-2-avec-lensemble-de-donnuxe9es-feuille-1-afin-que-toutes-les-personnes-interroguxe9es-aient-une-valeur-correspondante-repruxe9sentant-la-taille-de-la-population-du-district-dans-lequel-elles-vivent.}{%
+\subsubsection{Fusion de la taille de la population de chaque district
+(feuille 2) avec l'ensemble de données (feuille 1) afin que toutes les
+personnes interrogées aient une valeur correspondante représentant la
+taille de la population du district dans lequel elles
+vivent.}\label{fusion-de-la-taille-de-la-population-de-chaque-district-feuille-2-avec-lensemble-de-donnuxe9es-feuille-1-afin-que-toutes-les-personnes-interroguxe9es-aient-une-valeur-correspondante-repruxe9sentant-la-taille-de-la-population-du-district-dans-lequel-elles-vivent.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fusion avec la taille de la population}
+\CommentTok{\# chargement la feuille disrict }
+\NormalTok{district }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"Base\_Partie 2.xlsx"}\NormalTok{,}\AttributeTok{sheet =} \StringTok{"district"}\NormalTok{)}
+\NormalTok{fusion}\OtherTok{\textless{}{-}}\FunctionTok{merge}\NormalTok{(partie2, district , }\AttributeTok{by=}\StringTok{"district"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{calcul-de-la-duruxe9e-de-lentretien-et-indiquer-la-duruxe9e-moyenne-de-lentretien-par-enquuxeateur.}{%
+\subsubsection{Calcul de la durée de l'entretien et indiquer la durée
+moyenne de l'entretien par
+enquêteur.}\label{calcul-de-la-duruxe9e-de-lentretien-et-indiquer-la-duruxe9e-moyenne-de-lentretien-par-enquuxeateur.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convertion des colonnes en format de date et heure}
+\NormalTok{fusion}\SpecialCharTok{$}\NormalTok{starttime }\OtherTok{\textless{}{-}} \FunctionTok{as.POSIXct}\NormalTok{(fusion}\SpecialCharTok{$}\NormalTok{starttime)}
+\NormalTok{fusion}\SpecialCharTok{$}\NormalTok{endtime }\OtherTok{\textless{}{-}} \FunctionTok{as.POSIXct}\NormalTok{(fusion}\SpecialCharTok{$}\NormalTok{endtime)}
+\CommentTok{\# Calcul de la durée de l\textquotesingle{}entretien en minutes}
+\NormalTok{fusion}\SpecialCharTok{$}\NormalTok{duree\_entretien }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(fusion}\SpecialCharTok{$}\NormalTok{endtime, fusion}\SpecialCharTok{$}\NormalTok{starttime, }\AttributeTok{units =} \StringTok{"mins"}\NormalTok{))}
+
+\CommentTok{\# Calcul de la durée moyenne de l\textquotesingle{}entretien par enquêteur}
+\NormalTok{duree\_moy\_p\_enqueteur }\OtherTok{\textless{}{-}} \FunctionTok{tapply}\NormalTok{(fusion}\SpecialCharTok{$}\NormalTok{duree\_entretien, fusion}\SpecialCharTok{$}\NormalTok{enumerator, mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{renommez-toutes-les-variables-de-lensemble-de-donnuxe9es-en-ajoutant-le-pruxe9fixe-endline_-uxe0-laide-dune-boucle.}{%
+\subsubsection{Renommez toutes les variables de l'ensemble de données en
+ajoutant le préfixe ``endline\_'' à l'aide d'une
+boucle.}\label{renommez-toutes-les-variables-de-lensemble-de-donnuxe9es-en-ajoutant-le-pruxe9fixe-endline_-uxe0-laide-dune-boucle.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Renommons les variables avec le préfixe "endline\_"}
+\NormalTok{newb}\OtherTok{\textless{}{-}}\NormalTok{fusion}
+\CommentTok{\#Définition de la fonction de renommage et application grâce à un apply}
+\NormalTok{newb }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\FunctionTok{names}\NormalTok{(newb), }\ControlFlowTok{function}\NormalTok{(var) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{startsWith}\NormalTok{(var, }\StringTok{"endline\_"}\NormalTok{)) \{}
+    \FunctionTok{names}\NormalTok{(newb)[}\FunctionTok{names}\NormalTok{(newb) }\SpecialCharTok{==}\NormalTok{ var] }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"endline\_"}\NormalTok{, var)}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(newb[[var]])}
+\NormalTok{\})}
+\CommentTok{\# Convertion la liste en un nouveau data frame avec les variables renommées}
+\NormalTok{newb }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(newb)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ii.-analyse-et-visualisation-des-donnuxe9es.}{%
+\subsection{II. Analyse et visualisation des
+données.}\label{ii.-analyse-et-visualisation-des-donnuxe9es.}}
+
+\hypertarget{cruxe9ation-dun-tableau-ruxe9capitulatif-contenant-luxe2ge-moyen-et-le-nombre-moyen-denfants-par-district.}{%
+\subsubsection{Création d'un tableau récapitulatif contenant l'âge moyen
+et le nombre moyen d'enfants par
+district.}\label{cruxe9ation-dun-tableau-ruxe9capitulatif-contenant-luxe2ge-moyen-et-le-nombre-moyen-denfants-par-district.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcul du 1er et le 3e quartile de la variable ma\_variable}
+\NormalTok{Q1 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(partie2}\SpecialCharTok{$}\NormalTok{age, }\FloatTok{0.25}\NormalTok{)}
+\NormalTok{Q3 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(partie2}\SpecialCharTok{$}\NormalTok{age, }\FloatTok{0.75}\NormalTok{)}
+
+\CommentTok{\# Calcul de l\textquotesingle{}écart interquartile (IQR)}
+\NormalTok{IQR }\OtherTok{\textless{}{-}}\NormalTok{ Q3 }\SpecialCharTok{{-}}\NormalTok{ Q1}
+
+\CommentTok{\# Définition  des seuils pour exclure les valeurs aberrantes (par exemple, 1,5 fois l\textquotesingle{}IQR)}
+\NormalTok{seuil\_superieur }\OtherTok{\textless{}{-}}\NormalTok{ Q3 }\SpecialCharTok{+} \FloatTok{1.5} \SpecialCharTok{*}\NormalTok{ IQR}
+\NormalTok{seuil\_inferieur }\OtherTok{\textless{}{-}}\NormalTok{ Q1 }\SpecialCharTok{{-}} \FloatTok{1.5} \SpecialCharTok{*}\NormalTok{ IQR}
+
+\CommentTok{\# Filtrer les données pour exclure les valeurs aberrantes}
+\NormalTok{donne\_filtre }\OtherTok{\textless{}{-}}\NormalTok{ partie2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(age }\SpecialCharTok{\textgreater{}=}\NormalTok{ seuil\_inferieur, age }\SpecialCharTok{\textless{}=}\NormalTok{ seuil\_superieur)}
+
+\NormalTok{tableau\_1 }\OtherTok{\textless{}{-}}\NormalTok{ donne\_filtre }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(district,age,children\_num)}\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_continuous}\NormalTok{(}\AttributeTok{variable =}\NormalTok{age,}
+                            \AttributeTok{statistic =}\SpecialCharTok{\textasciitilde{}} \StringTok{"\{mean\}"}\NormalTok{,}
+                            \CommentTok{\#digits = 0,}
+                            \AttributeTok{include=}\NormalTok{district)}
+\NormalTok{tableau\_2 }\OtherTok{\textless{}{-}}\NormalTok{ donne\_filtre }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(district,age,children\_num)}\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_continuous}\NormalTok{(}\AttributeTok{variable =}\NormalTok{children\_num,}
+                            \AttributeTok{statistic =}\SpecialCharTok{\textasciitilde{}} \StringTok{"\{mean\}"}\NormalTok{,}
+                            \CommentTok{\#digits = 0,}
+                            \AttributeTok{include=}\NormalTok{district)}
+\NormalTok{tableau\_recapitulatif}\OtherTok{\textless{}{-}}\FunctionTok{tbl\_merge}\NormalTok{(}\FunctionTok{list}\NormalTok{(tableau\_1,tableau\_2),}
+                                 \AttributeTok{tab\_spanner=}\FunctionTok{c}\NormalTok{(}\StringTok{"Age Moyen des enfants"}\NormalTok{,}\StringTok{"Nombre Moyen d\textquotesingle{}enfant"}\NormalTok{))}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{modify\_caption}\NormalTok{(}\StringTok{"Age moyen \& nombre moyen d’enfants par district."}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{bold\_labels}\NormalTok{()}
+\NormalTok{tableau\_recapitulatif}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lcc@{}}
+\caption{Age moyen \& nombre moyen d'enfants par
+district.}\tabularnewline
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{N = 94} & \textbf{N = 94} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{N = 94} & \textbf{N = 94} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{district} & & \\
+1 & 27.7 & 1.00 \\
+2 & 26.6 & 0.69 \\
+3 & 26.1 & 0.00 \\
+4 & 26.0 & 0.00 \\
+5 & 24.3 & 0.50 \\
+6 & 23.2 & 0.12 \\
+7 & 25.2 & 0.00 \\
+8 & 24.6 & 1.27 \\
+\end{longtable}
+
+\hypertarget{test-de-si-la-diffuxe9rence-duxe2ge-entre-les-sexes-est-statistiquement-significative-au-niveau-de-5-.}{%
+\subsubsection{Test de si la différence d'âge entre les sexes est
+statistiquement significative au niveau de 5
+\%.}\label{test-de-si-la-diffuxe9rence-duxe2ge-entre-les-sexes-est-statistiquement-significative-au-niveau-de-5-.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_test}\OtherTok{\textless{}{-}}\NormalTok{partie2}\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(sex, intention)}
+\CommentTok{\# Effectuons l\textquotesingle{}analyse de régression linéaire}
+\NormalTok{modele }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(intention }\SpecialCharTok{\textasciitilde{}}\NormalTok{ sex, }\AttributeTok{data =}\NormalTok{ data\_test)}
+
+\CommentTok{\# Afficher les résultats du modèle}
+\NormalTok{modele}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_regression}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{Beta} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+sex & -0.92 & -2.0, 0.16 & 0.093 \\
+\end{longtable}
+
+\hypertarget{cruxe9ation-dun-nuage-de-points-de-luxe2ge-en-fonction-du-nombre-denfants.}{%
+\subsubsection{Création d'un nuage de points de l'âge en fonction du
+nombre
+d'enfants.}\label{cruxe9ation-dun-nuage-de-points-de-luxe2ge-en-fonction-du-nombre-denfants.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Création du nuage de points avec des effets visuels}
+\NormalTok{nuage\_points }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ donne\_filtre, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ children\_num, }\AttributeTok{y =}\NormalTok{ age)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}  \CommentTok{\# Couleur, taille et transparence des points}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Nuage de points de l\textquotesingle{}âge en fonction du nombre d\textquotesingle{}enfants"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Nombre d\textquotesingle{}enfants"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Âge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}  \CommentTok{\# Utiliser un thème minimal}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{panel.grid.major =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#FFF0FF"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{),  }\CommentTok{\# Ajouter une grille en pointillés}
+        \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),  }\CommentTok{\# Masquer les lignes de la grille secondaire}
+        \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{),  }\CommentTok{\# Taille du texte des étiquettes d\textquotesingle{}axe}
+        \AttributeTok{axis.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),  }\CommentTok{\# Taille et style du texte des titres d\textquotesingle{}axe}
+        \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{16}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),  }\CommentTok{\# Taille et style du titre du graphique}
+        \AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)  }\CommentTok{\# Positionner la légende en bas du graphique}
+
+\CommentTok{\# Afficher le nuage de points }
+\FunctionTok{print}\NormalTok{(nuage\_points)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rapport_projet_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+\hypertarget{estimation-de-leffet-de-lappartenance-au-groupe-de-traitement-sur-lintention-de-migrer.}{%
+\subsubsection{Estimation de l'effet de l'appartenance au groupe de
+traitement sur l'intention de
+migrer.}\label{estimation-de-leffet-de-lappartenance-au-groupe-de-traitement-sur-lintention-de-migrer.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_test}\OtherTok{\textless{}{-}}\NormalTok{partie2}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(intention,group\_traitement)}
+\CommentTok{\# Effectuer l\textquotesingle{}analyse de régression linéaire}
+\NormalTok{modele }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(intention }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group\_traitement, }\AttributeTok{data =}\NormalTok{ data\_test)}
+
+\CommentTok{\# Afficher les résultats du modèle}
+\NormalTok{modele}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{gtsummary}\SpecialCharTok{::}\FunctionTok{tbl\_regression}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{Beta} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+group\_traitement & -0.02 & -0.72, 0.68 & \textgreater0.9 \\
+\end{longtable}
+
+\hypertarget{cruxe9ation-dun-tableau-de-ruxe9gression-avec-3-moduxe8les.-la-variable-de-ruxe9sultat-est-toujours-intention.-moduxe8le-a-moduxe8le-vide---effet-du-traitement-sur-les-intentions.-moduxe8le-b-effet-du-traitement-sur-les-intentions-en-tenant-compte-de-luxe2ge-et-du-sexe.-moduxe8le-c-identique-au-moduxe8le-b-mais-en-contruxf4lant-le-district.-les-ruxe9sultats-des-trois-moduxe8les-doivent-uxeatre-affichuxe9s-dans-un-seul-tableau.}{%
+\subsubsection{Création d'un tableau de régression avec 3 modèles. La
+variable de résultat est toujours ``intention''. Modèle A : Modèle vide
+- Effet du traitement sur les intentions. Modèle B : Effet du traitement
+sur les intentions en tenant compte de l'âge et du sexe. Modèle C :
+Identique au modèle B mais en contrôlant le district. Les résultats des
+trois modèles doivent être affichés dans un seul
+tableau.}\label{cruxe9ation-dun-tableau-de-ruxe9gression-avec-3-moduxe8les.-la-variable-de-ruxe9sultat-est-toujours-intention.-moduxe8le-a-moduxe8le-vide---effet-du-traitement-sur-les-intentions.-moduxe8le-b-effet-du-traitement-sur-les-intentions-en-tenant-compte-de-luxe2ge-et-du-sexe.-moduxe8le-c-identique-au-moduxe8le-b-mais-en-contruxf4lant-le-district.-les-ruxe9sultats-des-trois-moduxe8les-doivent-uxeatre-affichuxe9s-dans-un-seul-tableau.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_test}\OtherTok{\textless{}{-}}\NormalTok{partie2}\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(intention,group\_traitement,age,sex,district)}
+\CommentTok{\# Création des modèles de régression}
+\NormalTok{modele\_A }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(intention }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group\_traitement, }\AttributeTok{data =}\NormalTok{ data\_test)}
+\NormalTok{modele\_B }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(intention }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group\_traitement }\SpecialCharTok{+}\NormalTok{ age }\SpecialCharTok{+}\NormalTok{ sex, }\AttributeTok{data =}\NormalTok{ data\_test)}
+\NormalTok{modele\_C }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(intention }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group\_traitement }\SpecialCharTok{+}\NormalTok{ age }\SpecialCharTok{+}\NormalTok{ sex }\SpecialCharTok{+}\NormalTok{ district,}
+               \AttributeTok{data =}\NormalTok{ data\_test)}
+
+\CommentTok{\# Création du tableau de régression avec gtsummary}
+\NormalTok{tA}\OtherTok{\textless{}{-}}\NormalTok{modele\_A}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{tbl\_regression}\NormalTok{(}\AttributeTok{exponentiate =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{tB}\OtherTok{\textless{}{-}}\NormalTok{modele\_B}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{tbl\_regression}\NormalTok{(}\AttributeTok{exponentiate =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{tC}\OtherTok{\textless{}{-}}\NormalTok{modele\_C}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{tbl\_regression}\NormalTok{(}\AttributeTok{exponentiate =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{tableau\_regression }\OtherTok{\textless{}{-}} \FunctionTok{tbl\_stack}\NormalTok{(}\FunctionTok{list}\NormalTok{(tA,tB,tC),}\AttributeTok{group\_header=}\FunctionTok{c}\NormalTok{(}\StringTok{"Modèle A"}\NormalTok{,}\StringTok{"Modèle B"}\NormalTok{,}\StringTok{"Modèle C"}\NormalTok{))}
+\NormalTok{tableau\_regression}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llccc@{}}
+\toprule\noalign{}
+\textbf{Group} & \textbf{Characteristic} & \textbf{Beta} & \textbf{95\%
+CI} & \textbf{p-value} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Modèle A & group\_traitement & -0.02 & -0.72, 0.68 & \textgreater0.9 \\
+Modèle B & group\_traitement & 0.09 & -0.62, 0.79 & 0.8 \\
+& age & 0.00 & 0.00, 0.00 & 0.9 \\
+& sex & -0.92 & -2.1, 0.23 & 0.12 \\
+Modèle C & group\_traitement & 0.14 & -0.57, 0.85 & 0.7 \\
+& age & 0.00 & 0.00, 0.00 & \textgreater0.9 \\
+& sex & -0.88 & -2.0, 0.27 & 0.13 \\
+& district & 0.09 & -0.06, 0.24 & 0.3 \\
+\end{longtable}
+
+\hypertarget{textcolorbluepartie-3-r-shiny}{%
+\section{\textbackslash textcolor\{blue\}\{Partie 3 :
+R-shiny\}}\label{textcolorbluepartie-3-r-shiny}}
+
+Dans cette partie, il est question de faire une application r shiny qui
+permet:
+
+\begin{itemize}
+\item
+  de visualiser les evenements par pays (le nombre d'evenement par pays
+  dans une carte)
+\item
+  de visualiser les evenements par pays, type, annee et la localisation.
+\end{itemize}
+
+\hypertarget{section-2}{%
+\subsubsection{\texorpdfstring{\underline{Idée de conception et fonctionnement de l'application}}{}}\label{section-2}}
+
+Pour résoudre ces deux questions à la fois, nous donnons la possibilité
+à l'utilisateur de sélectionner directement les variables (pays,
+évenements, années) qui l'intéressent dans la base de donnée fournie par
+l'exercice, et ceci grâce à l'interface web fournie par R-shiny. Il en
+va de soi qu'avec ces données que l'utilisateur entre dans l'appli, nous
+lui retournons l'emplacement géographique de tous les évenements
+sélectionnés, la carte du pays sélectionné et aussi l'année. Nous nous
+servons de la légende qui est interactive pour afficher les différentes
+statistiques concernant sa sélection.
+
+Ainsi, lorsque l'utilisateur voudra avoir par exemple le nombre
+d'évenements par pays, il lui suffira de sélectionner uniquement le pays
+d'intérêt et de sélectionner tous les types d'évenements ainsi que
+toutes les années.
+
+\color{pink}{liste des packages utilisés dans la section R-shiny}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages(c(leaflet, sf, shinydashboard, rnaturalearth, rnaturalearthdata, ))}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
